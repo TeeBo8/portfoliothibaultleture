@@ -6,24 +6,25 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "portfoliothibaultleture",
+    template: "%s | portfoliothibaultleture",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Portfolio de Thibault L",
+  metadataBase: new URL("https://portfoliothibaultleture.vercel.app"),
   openGraph: {
-    title: "chronark.com",
+    title: "portfoliothibaultleture",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+      "Portfolio de Thibault L",
+    url: "https://portfoliothibaultleture.vercel.app",
+    siteName: "portfoliothibaultleture",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "https://portfoliothibaultleture.vercel.app/og.png",
         width: 1920,
         height: 1080,
       },
     ],
-    locale: "en-US",
+    locale: "fr-FR",
     type: "website",
   },
   robots: {
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Thibault L",
     card: "summary_large_image",
   },
   icons: {

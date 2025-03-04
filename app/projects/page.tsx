@@ -4,13 +4,26 @@ import { allProjects } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-import { Redis } from "@upstash/redis";
+// import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 
-const redis = Redis.fromEnv();
+// Commenté pour éviter l'erreur Redis
+// const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
+  // Solution temporaire : créer un objet views avec tous les slugs initialisés à 0
+  const views: Record<string, number> = {};
+  
+  // S'assurer que chaque projet a une entrée dans l'objet views
+  allProjects.forEach(project => {
+    if (project.slug) {
+      views[project.slug] = 0;
+    }
+  });
+
+  // Version originale avec Redis
+  /*
   const views = (
     await redis.mget<number[]>(
       ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
@@ -19,17 +32,25 @@ export default async function ProjectsPage() {
     acc[allProjects[i].slug] = v ?? 0;
     return acc;
   }, {} as Record<string, number>);
+  */
 
-  const featured = allProjects.find((project) => project.slug === "unkey")!;
-  const top2 = allProjects.find((project) => project.slug === "planetfall")!;
-  const top3 = allProjects.find((project) => project.slug === "highstorm")!;
-  const sorted = allProjects
-    .filter((p) => p.published)
-    .filter(
-      (project) =>
-        project.slug !== featured.slug &&
-        project.slug !== top2.slug &&
-        project.slug !== top3.slug,
+  // Filtrer les projets valides (avec un slug et published)
+  const validProjects = allProjects.filter(p => p.slug && p.published);
+  
+  // Trouver les projets ou utiliser le premier projet valide si non trouvés
+  const featured = validProjects.find(project => project.slug === "restaurant-wordpress") || validProjects[0] || null;
+  const top2 = validProjects.find(project => project.slug === "email-ai") || 
+    (validProjects.length > 1 ? validProjects[1] : featured) || null;
+  const top3 = validProjects.find(project => project.slug === "coming-soon") || 
+    (validProjects.length > 2 ? validProjects[2] : top2) || null;
+
+  // Filtrer les projets restants
+  const sorted = validProjects
+    .filter(project => 
+      featured && top2 && top3 && 
+      project.slug !== featured.slug && 
+      project.slug !== top2.slug && 
+      project.slug !== top3.slug
     )
     .sort(
       (a, b) =>
@@ -53,11 +74,11 @@ export default async function ProjectsPage() {
 
         <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
           <Card>
-            <Link href={`/projects/${featured.slug}`}>
+            <Link href={`/projects/${featured?.slug}`}>
               <article className="relative w-full h-full p-4 md:p-8">
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-xs text-zinc-100">
-                    {featured.date ? (
+                    {featured?.date ? (
                       <time dateTime={new Date(featured.date).toISOString()}>
                         {Intl.DateTimeFormat(undefined, {
                           dateStyle: "medium",
@@ -70,7 +91,7 @@ export default async function ProjectsPage() {
                   <span className="flex items-center gap-1 text-xs text-zinc-500">
                     <Eye className="w-4 h-4" />{" "}
                     {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-                      views[featured.slug] ?? 0,
+                      views[featured?.slug] ?? 0,
                     )}
                   </span>
                 </div>
@@ -79,10 +100,10 @@ export default async function ProjectsPage() {
                   id="featured-post"
                   className="mt-4 text-3xl font-bold text-zinc-100 group-hover:text-white sm:text-4xl font-display"
                 >
-                  {featured.title}
+                  {featured?.title}
                 </h2>
                 <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
-                  {featured.description}
+                  {featured?.description}
                 </p>
                 <div className="absolute bottom-4 md:bottom-8">
                   <p className="hidden text-zinc-200 hover:text-zinc-50 lg:block">
@@ -95,8 +116,8 @@ export default async function ProjectsPage() {
 
           <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
             {[top2, top3].map((project) => (
-              <Card key={project.slug}>
-                <Article project={project} views={views[project.slug] ?? 0} />
+              <Card key={project?.slug}>
+                <Article project={project} views={views[project?.slug] ?? 0} />
               </Card>
             ))}
           </div>
@@ -108,8 +129,8 @@ export default async function ProjectsPage() {
             {sorted
               .filter((_, i) => i % 3 === 0)
               .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                <Card key={project?.slug}>
+                  <Article project={project} views={views[project?.slug] ?? 0} />
                 </Card>
               ))}
           </div>
@@ -117,8 +138,8 @@ export default async function ProjectsPage() {
             {sorted
               .filter((_, i) => i % 3 === 1)
               .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                <Card key={project?.slug}>
+                  <Article project={project} views={views[project?.slug] ?? 0} />
                 </Card>
               ))}
           </div>
@@ -126,8 +147,8 @@ export default async function ProjectsPage() {
             {sorted
               .filter((_, i) => i % 3 === 2)
               .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                <Card key={project?.slug}>
+                  <Article project={project} views={views[project?.slug] ?? 0} />
                 </Card>
               ))}
           </div>
