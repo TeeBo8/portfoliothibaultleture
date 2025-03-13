@@ -24,6 +24,13 @@ export const Project = defineDocumentType(() => ({
 	fields: {
 		published: {
 			type: "boolean",
+			resolve: (value) => {
+				// Nettoyer la valeur pour gérer les fins de ligne Windows
+				if (typeof value === 'string') {
+					return value.trim() === 'true';
+				}
+				return !!value;
+			},
 		},
 		title: {
 			type: "string",
