@@ -42,12 +42,25 @@ export const Project = defineDocumentType(() => ({
 		},
 		date: {
 			type: "date",
+			required: true,
 		},
 		url: {
 			type: "string",
 		},
 		repository: {
 			type: "string",
+		},
+		stack: {
+			type: "list",
+			of: { type: "string" },
+			description: "Liste des technologies utilisées pour le projet",
+			required: false,
+		},
+		isPrivateRepo: {
+			type: "boolean",
+			description: "Indique si le dépôt GitHub est privé",
+			default: false,
+			required: false,
 		},
 	},
 	computedFields,
