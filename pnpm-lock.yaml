@@ -17,9 +17,6 @@ importers:
 
   .:
     dependencies:
-      '@next/font':
-        specifier: ^13.5.4
-        version: 13.5.8
       '@next/mdx':
         specifier: ^13.5.4
         version: 13.5.8
@@ -385,9 +382,6 @@ packages:
 
   '@next/env@13.5.8':
     resolution: {integrity: sha512-YmiG58BqyZ2FjrF2+5uZExL2BrLr8RTQzLXNDJ8pJr0O+rPlOeDPXp1p1/4OrR3avDidzZo3D8QO2cuDv1KCkw==}
-
-  '@next/font@13.5.8':
-    resolution: {integrity: sha512-ITORq3Sw95OWNxUxgLICXKmeKFh7K5d+w1v+vO4cOZz6i2taUer/77zVxTZExmk72bD9P5lahkgunjS8ej24DA==}
 
   '@next/mdx@13.5.8':
     resolution: {integrity: sha512-YTPEh2aqm2PDA8DL2u6wCfD+mk9hQe7ksmQD0dSsST3TPNgfB7CLwVdsTeOODP0zSqhMmcCGOIu3ie3yDm0f5A==}
@@ -2308,8 +2302,6 @@ snapshots:
       - supports-color
 
   '@next/env@13.5.8': {}
-
-  '@next/font@13.5.8': {}
 
   '@next/mdx@13.5.8':
     dependencies:
