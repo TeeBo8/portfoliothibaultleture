@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "fmt": "pnpm rome check . --apply-unsafe && pnpm rome format . --write"
+    "lint": "rome check .",
+    "lint:fix": "rome check . --apply-unsafe",
+    "format": "rome format . --write",
+    "fmt": "pnpm lint:fix && pnpm format"
   },
   "dependencies": {
-    "@next/font": "^13.5.4",
     "@next/mdx": "^13.5.4",
     "@upstash/redis": "^1.23.3",
     "contentlayer": "^0.3.4",

@@ -8,7 +8,9 @@ type Props = {
 };
 
 export const Article: React.FC<Props> = ({ project, views = 0 }) => {
-	const repoUrl = project.repository ? `https://github.com/${project.repository}` : null;
+	const repoUrl = project.repository
+		? `https://github.com/${project.repository}`
+		: null;
 
 	return (
 		<article className="p-4 md:p-8 h-full flex flex-col justify-between">
@@ -27,7 +29,9 @@ export const Article: React.FC<Props> = ({ project, views = 0 }) => {
 					</span>
 					<span className="text-zinc-500 text-xs flex items-center gap-1">
 						<Eye className="w-4 h-4" />{" "}
-						{Intl.NumberFormat("en-US", { notation: "compact" }).format(views || 0)}
+						{Intl.NumberFormat("en-US", { notation: "compact" }).format(
+							views || 0,
+						)}
 					</span>
 				</div>
 				<Link href={`/projects/${project.slug}`} className="group block">
@@ -42,7 +46,10 @@ export const Article: React.FC<Props> = ({ project, views = 0 }) => {
 				{project.stack && project.stack.length > 0 && (
 					<div className="mt-4 flex flex-wrap gap-2">
 						{project.stack.map((tech) => (
-							<span key={tech} className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700 rounded">
+							<span
+								key={tech}
+								className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700 rounded"
+							>
 								{tech}
 							</span>
 						))}

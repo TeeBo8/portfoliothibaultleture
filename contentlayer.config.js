@@ -26,8 +26,8 @@ export const Project = defineDocumentType(() => ({
 			type: "boolean",
 			resolve: (value) => {
 				// Nettoyer la valeur pour gérer les fins de ligne Windows
-				if (typeof value === 'string') {
-					return value.trim() === 'true';
+				if (typeof value === "string") {
+					return value.trim() === "true";
 				}
 				return !!value;
 			},
