@@ -1,0 +1,49 @@
+---
+title: MicroSaaS Genie
+description: Application web pour aider les entrepreneurs à trouver, valider et (potentiellement) lancer des idées de MicroSaaS, avec un accent sur la validation par la donnée et l'IA.
+date: "2025-06-04"
+url: https://microsaasgenie.vercel.app/
+published: true
+repository: TeeBo8/microsaas-genie
+isPrivateRepo: true
+stack:
+  - Next.js (App Router)
+  - TypeScript
+  - Tailwind CSS
+  - shadcn/ui
+  - Auth.js v5
+  - Drizzle ORM
+  - Neon DB (PostgreSQL)
+  - Vercel AI SDK
+  - Groq (Llama3)
+---
+
+[![](/images/projects/microsaas-genie-card.png)](https://microsaasgenie.vercel.app/)
+
+MicroSaaS Genie est une plateforme web innovante conçue pour guider les entrepreneurs, des solopreneurs aux développeurs indépendants, à travers le cycle de vie complet d'une idée de Micro-SaaS. L'objectif est de passer de l'inspiration initiale à une validation solide basée sur les données, et d'ouvrir la voie à un lancement réussi.
+
+## Fonctionnalités principales
+
+- **Génération d'Idées par IA** : Exploite la puissance de modèles de langage avancés (Llama3 via Groq) pour générer des suggestions d'idées de MicroSaaS structurées, incluant nom, description, audience cible, et problème potentiel à résoudre
+- **Gestion Personnalisée des Idées (CRUD Complet)** : Un tableau de bord utilisateur permet de sauvegarder, consulter en détail, modifier et supprimer les idées. Chaque idée est liée à l'utilisateur authentifié
+- **Authentification Sécurisée** : Intégration d'Auth.js (NextAuth v5) pour une connexion facile et sécurisée via des fournisseurs OAuth (Google, GitHub)
+- **Interface Utilisateur Moderne** : Développée avec Next.js 15 (App Router), TypeScript, Tailwind CSS, et la librairie de composants shadcn/ui pour une expérience utilisateur soignée, réactive et accessible (mode clair/sombre)
+- **Base de Données Robuste** : Utilisation de Neon (Serverless PostgreSQL) avec Drizzle ORM pour la persistance des données
+- **Déploiement Continu sur Vercel** : Intégration CI/CD pour des mises à jour fluides et rapides
+
+## Prochaines étapes prévues
+
+- Module de validation d'idées plus poussé (scoring, analyse de mots-clés)
+- Intégration d'API tierces pour enrichir les données de validation
+- Fonctionnalités communautaires (partage, feedback)
+
+Cette plateforme offre une solution complète pour les entrepreneurs souhaitant structurer leur démarche de création de MicroSaaS, en combinant l'intelligence artificielle et les meilleures pratiques de validation d'idées.
+
+<div className="flex justify-end gap-2 mt-5">
+  <a href="https://github.com/TeeBo8" target="_blank" rel="noopener noreferrer">
+    <img src="https://i.imgur.com/gNeMtO4.png" alt="GitHub" width="24" height="24" />
+  </a>
+  <a href="https://x.com/THIBAUL76280609" target="_blank" rel="noopener noreferrer">
+    <img src="https://i.imgur.com/yvDFaXX.png" alt="Twitter" width="24" height="24" />
+  </a>
+</div> 

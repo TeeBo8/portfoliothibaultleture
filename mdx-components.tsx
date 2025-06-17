@@ -2,8 +2,8 @@ import { PropsWithChildren } from "react";
 
 // This file is required to use MDX in `app` directory.
 export function useMDXComponents(
-	components: Record<string, React.ComponentType<any>>,
-): Record<string, React.ComponentType<any>> {
+	components: Record<string, React.ComponentType<React.PropsWithChildren>>,
+): Record<string, React.ComponentType<React.PropsWithChildren>> {
 	return {
 		// Allows customizing built-in components, e.g. to add styling.
 		h1: ({ children }: PropsWithChildren) => (

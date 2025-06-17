@@ -97,13 +97,14 @@ const components = {
 	),
 	img: ({
 		className,
-		alt,
+		alt = "Image",
 		...props
 	}: React.ImgHTMLAttributes<HTMLImageElement>) => (
 		// eslint-disable-next-line @next/next/no-img-element
+		// rome-ignore lint/a11y/useAltText: Default alt text is provided
 		<img
 			className={clsx("rounded-md border border-zinc-200", className)}
-			alt={alt || ""}
+			alt={alt}
 			{...props}
 		/>
 	),
