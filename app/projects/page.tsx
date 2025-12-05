@@ -4,35 +4,21 @@ import { allProjects } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-// import { Redis } from "@upstash/redis";
+import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 
-// Commenté pour éviter l'erreur Redis
-// const redis = Redis.fromEnv();
+const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-	// Solution temporaire : créer un objet views avec tous les slugs initialisés à 0
-	const views: Record<string, number> = {};
-
-	// S'assurer que chaque projet a une entrée dans l'objet views
-	allProjects.forEach((project) => {
-		if (project.slug) {
-			views[project.slug] = 0;
-		}
-	});
-
-	// Version originale avec Redis
-	/*
-  const views = (
-    await redis.mget<number[]>(
-      ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
-    acc[allProjects[i].slug] = v ?? 0;
-    return acc;
-  }, {} as Record<string, number>);
-  */
+	const views = (
+		await redis.mget<number[]>(
+			...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
+		)
+	).reduce((acc, v, i) => {
+		acc[allProjects[i].slug] = v ?? 0;
+		return acc;
+	}, {} as Record<string, number>);
 
 	// 1. Filtrer les projets valides
 	const validProjects = allProjects.filter((p) => p.slug && p.published);
