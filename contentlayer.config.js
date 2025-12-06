@@ -62,6 +62,11 @@ export const Project = defineDocumentType(() => ({
 			default: false,
 			required: false,
 		},
+		gumroadUrl: {
+			type: "string",
+			description: "URL Gumroad pour les templates",
+			required: false,
+		},
 	},
 	computedFields,
 }));

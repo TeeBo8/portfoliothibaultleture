@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "contentlayer": "pnpm exec contentlayer build",
+    "build": "node scripts/build.js",
+    "postinstall": "pnpm contentlayer",
     "start": "next start",
     "lint": "rome check .",
     "lint:fix": "rome check . --apply-unsafe",
