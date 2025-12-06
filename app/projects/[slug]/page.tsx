@@ -7,23 +7,16 @@ import { ReportView } from "./view";
 import { Redis } from "@upstash/redis";
 
 export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 type Props = {
-	params: Promise<{
+	params: {
 		slug: string;
-	}>;
+	};
 };
 
-export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
-	return allProjects
-		.filter((p) => p.published)
-		.map((p) => ({
-			slug: p.slug,
-		}));
-}
-
 export default async function PostPage({ params }: Props) {
-	const { slug } = await params;
+	const slug = params?.slug;
 	const project = allProjects.find((project) => project.slug === slug);
 
 	if (!project) {

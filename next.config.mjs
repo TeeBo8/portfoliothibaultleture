@@ -6,9 +6,6 @@ const nextConfig = {
 	experimental: {
 		mdxRs: true,
 	},
-	// Désactiver Turbopack pour compatibilité avec contentlayer
-	turbopack: {},
-	webpack: (config) => config,
 };
 
 export default withContentlayer(nextConfig);

@@ -3,7 +3,6 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { SocialLinks } from "./social-links";
 
 function clsx(...args: (string | undefined | null | false)[]): string {
 	return args.filter(Boolean).join(" ");
@@ -164,7 +163,6 @@ const components = {
 		/>
 	),
 	Image,
-	SocialLinks,
 };
 
 interface MdxProps {
