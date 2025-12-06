@@ -1,16 +1,8 @@
 "use client";
-import {
-	motion,
-	useMotionTemplate,
-	useMotionValue,
-	useSpring,
-} from "framer-motion";
-
-import { MouseEventHandler, PropsWithChildren, MouseEvent } from "react";
+import { PropsWithChildren, MouseEvent, useState } from "react";
 
 export const Card: React.FC<PropsWithChildren> = ({ children }) => {
-	const mouseX = useSpring(0, { stiffness: 500, damping: 100 });
-	const mouseY = useSpring(0, { stiffness: 500, damping: 100 });
+	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
 	function onMouseMove({
 		currentTarget,
@@ -18,10 +10,13 @@ export const Card: React.FC<PropsWithChildren> = ({ children }) => {
 		clientY,
 	}: MouseEvent<HTMLDivElement>) {
 		const { left, top } = currentTarget.getBoundingClientRect();
-		mouseX.set(clientX - left);
-		mouseY.set(clientY - top);
+		setMousePosition({
+			x: clientX - left,
+			y: clientY - top,
+		});
 	}
-	const maskImage = useMotionTemplate`radial-gradient(240px at ${mouseX}px ${mouseY}px, white, transparent)`;
+
+	const maskImage = `radial-gradient(240px at ${mousePosition.x}px ${mousePosition.y}px, white, transparent)`;
 	const style = { maskImage, WebkitMaskImage: maskImage };
 
 	return (
@@ -31,11 +26,11 @@ export const Card: React.FC<PropsWithChildren> = ({ children }) => {
 		>
 			<div className="pointer-events-none">
 				<div className="absolute inset-0 z-0  transition duration-1000 [mask-image:linear-gradient(black,transparent)]" />
-				<motion.div
+				<div
 					className="absolute inset-0 z-10  bg-gradient-to-br opacity-100  via-zinc-100/10  transition duration-1000 group-hover:opacity-50 "
 					style={style}
 				/>
-				<motion.div
+				<div
 					className="absolute inset-0 z-10 opacity-0 mix-blend-overlay transition duration-1000 group-hover:opacity-100"
 					style={style}
 				/>
