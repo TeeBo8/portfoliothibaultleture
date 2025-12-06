@@ -14,8 +14,6 @@ type Props = {
 	}>;
 };
 
-const redis = Redis.fromEnv();
-
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
 	return allProjects
 		.filter((p) => p.published)
@@ -32,6 +30,7 @@ export default async function PostPage({ params }: Props) {
 		notFound();
 	}
 
+	const redis = Redis.fromEnv();
 	const views =
 		(await redis.get<number>(["pageviews", "projects", slug].join(":"))) ?? 0;
 
