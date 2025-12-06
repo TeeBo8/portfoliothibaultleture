@@ -42,7 +42,10 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 	},
 	icons: {
-		shortcut: "/favicon.png",
+		shortcut: "/favicon.png?v=2",
+		icon: [
+			{ url: "/favicon.png?v=2", sizes: "32x32", type: "image/png" },
+		],
 	},
 };
 const inter = Inter({
