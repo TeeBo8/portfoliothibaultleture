@@ -13,9 +13,9 @@ const socials = [
 	},
 	{
 		icon: <Mail size={20} />,
-		href: "mailto:t.leture@gmail.com",
+		href: "mailto:contact@teebostudio.fr",
 		label: "Email",
-		handle: "t.leture@gmail.com",
+		handle: "contact@teebostudio.fr",
 	},
 	{
 		icon: <Github size={20} />,
