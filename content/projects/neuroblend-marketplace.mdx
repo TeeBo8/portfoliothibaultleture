@@ -1,0 +1,68 @@
+---
+title: NeuroBlend Marketplace
+description: Marketplace de cafés artisanaux adaptés aux profils neurodivergents (HPI, ADHD, Hypersensibles) avec système d'abonnements, quiz de profil, espace torréfacteurs et paiements Stripe Connect.
+date: "2025-04-01"
+url: https://neuro-blend-marketplace.vercel.app/
+repository: TeeBo8/neuro-blend-marketplace
+isPrivateRepo: true
+published: true
+stack:
+  - Next.js (App Router)
+  - TypeScript
+  - Tailwind CSS
+  - shadcn/ui
+  - tRPC
+  - Drizzle ORM
+  - Better Auth
+  - Stripe Connect
+  - Neon PostgreSQL
+---
+
+NeuroBlend est une marketplace innovante de cafés artisanaux spécialement conçus pour les profils neurodivergents. La plateforme connecte des torréfacteurs artisanaux avec une communauté de personnes HPI, ADHD et Hypersensibles, en proposant des blends adaptés à chaque fonctionnement cognitif.
+
+## Un concept unique
+
+Chaque esprit est unique, et NeuroBlend part du principe que le café devrait l'être aussi. La plateforme propose des blends créés par des torréfacteurs artisanaux, formulés pour s'adapter aux besoins spécifiques de chaque profil neurodivergent : concentration pour les ADHD, stimulation douce pour les HPI, et saveurs équilibrées pour les Hypersensibles.
+
+## Fonctionnalités principales
+
+- **Quiz de profil neurodivergent** : Outil interactif permettant aux utilisateurs d'identifier leur profil (HPI, ADHD ou Hypersensible) et de recevoir des recommandations de cafés personnalisées
+
+- **Catalogue par profil** : Trois univers distincts avec des blends spécifiquement adaptés — esprits analytiques et créatifs (HPI), concentration et focus (ADHD), saveurs douces et équilibrées (Hypersensibles)
+
+- **Système d'abonnements 3 tiers** : Formule Découverte (€9.90/mois, 5 capsules), Essentiel (€14.90/mois, 10 capsules, -5%) et Premium (€24.90/mois, 20 capsules, produits exclusifs)
+
+- **Profils torréfacteurs artisanaux** : Vitrine dédiée aux artisans partenaires avec leur spécialité, localisation et philosophie de torréfaction
+
+- **Espace vendeur** : Système complet d'inscription et de gestion pour les torréfacteurs, avec dashboard dédié et commission transparente de 15%
+
+- **Panier et checkout Stripe Connect** : Paiements sécurisés en mode marketplace multi-vendeurs, avec répartition automatique des revenus entre la plateforme et les artisans
+
+- **Authentification avancée** : Gestion complète des sessions et comptes utilisateurs via Better Auth
+
+- **Témoignages clients** : Section sociale avec avis et notes étoilées pour renforcer la confiance communautaire
+
+- **Parcours en 3 étapes** : Onboarding simplifié — identifier son profil, choisir ses capsules, recevoir chez soi
+
+- **Dark mode** : Interface adaptable avec toggle jour/nuit pour le confort visuel
+
+## Stack technique
+
+Architecture full-stack moderne avec Next.js App Router et TypeScript. Le backend utilise tRPC pour des API typées end-to-end, Drizzle ORM couplé à Neon PostgreSQL pour la persistence, et Stripe Connect pour gérer les flux de paiement marketplace. L'authentification repose sur Better Auth pour une gestion sécurisée des sessions. L'interface est construite avec Tailwind CSS et shadcn/ui pour un design system cohérent et accessible.
+
+## Vision et impact
+
+NeuroBlend démontre la conception d'une marketplace complète avec des enjeux techniques avancés : gestion multi-vendeurs, paiements split via Stripe Connect, personnalisation basée sur le profil utilisateur et architecture scalable. Le projet allie technologie et inclusivité en proposant une expérience adaptée à la neurodiversité.
+
+<div className="flex justify-end gap-8 mt-8">
+  <a target="_blank" href="https://x.com/THIBAUL76280609" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  </a>
+  <a target="_blank" href="https://github.com/TeeBo8" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.532 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.442 22 12.017 22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+    </svg>
+  </a>
+</div>
