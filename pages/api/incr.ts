@@ -38,7 +38,10 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
 		}
 
 		// Récupération et hashage de l'IP pour la déduplication
-		const ip = req.ip;
+		const ip =
+			req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+			req.headers.get("x-real-ip") ??
+			undefined;
 		if (ip) {
 			try {
 				// Hash the IP in order to not store it directly in your db.
